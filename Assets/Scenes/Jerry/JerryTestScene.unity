@@ -205,7 +205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1006761295}
+<<<<<<< HEAD
   _offset: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> master
 --- !u!1 &623411956
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +417,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> master
   m_MaskInteraction: 0
 --- !u!4 &1006761298
 Transform:
@@ -488,6 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26b05223684b430981af68759ee12ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   jumpVelocity: 7.2
   fallMultiplier: 2.2
   lowJumpMultiplier: 2
@@ -499,6 +507,18 @@ MonoBehaviour:
   groundCheck: {fileID: 623411957}
   _isGrounded: 0
   _rb: {fileID: 0}
+=======
+  jumpVelocity: 4
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  walkSpeed: 3
+  dashSpeed: 4
+  groundCheckRad: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  groundCheck: {fileID: 623411957}
+>>>>>>> master
 --- !u!1 &2126943953
 GameObject:
   m_ObjectHideFlags: 0
