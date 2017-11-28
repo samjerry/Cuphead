@@ -8,13 +8,31 @@ public class PlayerHealth : MonoBehaviour {
 	/// Player health manager by Jerry Sam.
 	/// </summary>
 
-	// Use this for initialization
-	void Start () {
-		
+	public int playerHP;
+
+	private bool _isDead;
+
+	void Start(){
+		playerHP = 3;
+		_isDead = false;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
+
+		if (playerHP <= 0) {
+			_isDead = true;
+		}
+
+		if (!_isDead) {
+			Time.timeScale = 1;
+		} else if (_isDead) {
+			Time.timeScale = 0;
+			Destroy(this.gameObject);
+		}
+	}
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Enemy") {
+			playerHP -= 1;
+		}
 	}
 }
