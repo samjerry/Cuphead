@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	private bool _isDead;
 
-	void Start(){
+	void Start () {
 		playerHP = 3;
 		_isDead = false;
 	}
@@ -20,19 +20,16 @@ public class PlayerHealth : MonoBehaviour {
 	void Update () {
 
 		if (playerHP <= 0) {
-			_isDead = true;
-		}
-
-		if (!_isDead) {
-			Time.timeScale = 1;
-		} else if (_isDead) {
-			Time.timeScale = 0;
-			Destroy(this.gameObject);
+			Dead ();
 		}
 	}
-	void OnCollisionEnter2D(Collision2D other){
+	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Enemy") {
 			playerHP -= 1;
 		}
+	}
+
+	void Dead () {
+		Time.timeScale = 0;
 	}
 }
