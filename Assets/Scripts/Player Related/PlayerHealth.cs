@@ -10,11 +10,8 @@ public class PlayerHealth : MonoBehaviour {
 
 	public int playerHP;
 
-	private bool _isDead;
-
 	void Start () {
 		playerHP = 3;
-		_isDead = false;
 	}
 
 	void Update () {

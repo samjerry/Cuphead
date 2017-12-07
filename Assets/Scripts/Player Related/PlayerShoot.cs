@@ -8,13 +8,19 @@ public class PlayerShoot : MonoBehaviour {
 	/// Player shooting by Jerry Sam.
 	/// </summary>
 
-	// Use this for initialization
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	private void Shoot(){
+
+	}
+
+	private void ChangeAimDir(){
+
 	}
 }
