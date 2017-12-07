@@ -7,29 +7,19 @@ public class MovementScript : MonoBehaviour {
     private Rigidbody rb;
     Vector2 origin;
 
-    public float cooldownTimer;
-    public float coolDown = 2f;
-
     void Start () {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(FlyUp());
+    }
 
-	}
-
-    void FixedUpdate() {
-        if (cooldownTimer > 0)
-        {
-            cooldownTimer -= Time.deltaTime;
-        }
-        if (cooldownTimer < 0)
-        {
-            cooldownTimer = 0;
-        }
-        if (cooldownTimer == 0)
+    IEnumerator FlyUp()
+    {
+        while (true)
         {
             Force();
-            cooldownTimer = coolDown;
+            yield return new WaitForSeconds(5f);
         }
-     }
+    }
 
     void OnTriggerEnter(Collider coll)
     {

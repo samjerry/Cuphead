@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ArcShotScript : MonoBehaviour
 {
+
     public Transform Target;
     public float firingAngle = 45.0f;
     public float gravity = 9.8f;
@@ -43,13 +44,13 @@ public class ArcShotScript : MonoBehaviour
         float flightDuration = target_Distance / Vx;
 
         // Rotate projectile to face the target.
-        Projectile.rotation = Quaternion.LookRotation(Target.position - Projectile.position);
+       // Projectile.rotation = Quaternion.LookRotation(Target.position - Projectile.position);
 
         float elapse_time = 0;
 
         while (elapse_time < flightDuration)
         {
-            Projectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+            Projectile.Translate(-Vx * Time.deltaTime, (Vy - (gravity * elapse_time)) * Time.deltaTime, 0);
 
             elapse_time += Time.deltaTime;
 
@@ -57,3 +58,4 @@ public class ArcShotScript : MonoBehaviour
         }
     }
 }
+ 
