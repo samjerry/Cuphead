@@ -4,19 +4,22 @@ using System.Collections;
 public class ArcShotScript : MonoBehaviour
 {
     private Animator _anim;
+    public GameObject Bullet;
+    
 
     void Start()
     {
         StartCoroutine(SimulateProjectile());
         _anim = GetComponent<Animator>();
+        
     }
 
 
     IEnumerator SimulateProjectile()
     {
         while (true) {
-
-                yield return new WaitForSeconds(5f);
+            Instantiate(Bullet, transform.position, transform.rotation);
+            yield return new WaitForSeconds(5f);
         }
     }
 

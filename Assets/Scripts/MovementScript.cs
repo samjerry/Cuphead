@@ -6,6 +6,7 @@ public class MovementScript : MonoBehaviour {
 
     private Rigidbody2D _rb;
     private Animator _anim;
+    public GameObject platform;
 
     void Start () {
 
@@ -31,8 +32,12 @@ public class MovementScript : MonoBehaviour {
             _anim.SetBool("PlayStop", false);
             _rb.velocity = Vector2.zero;
         }
-    }
 
+        if (coll.gameObject.tag == "Platform")
+        {
+            Physics2D.IgnoreCollision(platform.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+    }
     
     void Force () {
         
