@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour {
 
-    private Rigidbody rb;
-    Vector2 origin;
+    private Rigidbody2D _rb;
+    private Animator _anim;
 
     void Start () {
-        rb = GetComponent<Rigidbody>();
+
+        _anim = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
         StartCoroutine(FlyUp());
     }
 
@@ -16,20 +18,26 @@ public class MovementScript : MonoBehaviour {
     {
         while (true)
         {
+            _anim.SetBool("PlayStop", true);
             Force();
             yield return new WaitForSeconds(5f);
         }
     }
 
-    void OnTriggerEnter(Collider coll)
+    void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Stop")
         {
-            rb.velocity = Vector3.zero;
+            _anim.SetBool("PlayStop", false);
+            _rb.velocity = Vector2.zero;
         }
     }
-	
-	void Force () {
-        rb.AddForce(transform.up * 600);
+
+    
+    void Force () {
+        
+        _rb.AddForce(transform.up * 650);
 	}
+
+    
 }
