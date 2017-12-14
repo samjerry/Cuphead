@@ -1,21 +1,21 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class CameraManager : MonoBehaviour {
+public class cameraManager : MonoBehaviour {
 
-	/// <summary>
-	/// The camera controller by Jerry Sam.
-	/// </summary>
+	public GameObject target;
 
-	public GameObject player;
+	private Vector3 offset;
 
-	private Vector3 _offset;
-
-	void Start (){
-		_offset = transform.position - player.transform.position;
+	void Start ()
+	{
+		offset = transform.position - target.transform.position;
 	}
 
-	void LateUpdate (){
-		transform.position = player.transform.position + _offset;
+	void LateUpdate ()
+	{
+        if(target)
+		transform.position = target.transform.position + offset;
 	}
 }
