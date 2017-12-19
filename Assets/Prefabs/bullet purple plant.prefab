@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212307373521510048}
   - component: {fileID: 50271614128604618}
   - component: {fileID: 70503298501187078}
+  - component: {fileID: 114727149067980808}
   m_Layer: 0
   m_Name: bullet purple plant
   m_TagString: Untagged
@@ -56,7 +57,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -77,6 +78,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4.1399994, y: 4.0899997}
   m_Direction: 0
+--- !u!114 &114727149067980808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1932411970740008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de12da27ac92ff141859998b8138d61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Explosion: {fileID: 1416370941150418, guid: 50a3b7d80c541a241883d2c33cc05cce, type: 2}
 --- !u!212 &212307373521510048
 SpriteRenderer:
   m_ObjectHideFlags: 1

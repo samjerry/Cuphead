@@ -8,6 +8,7 @@ TagManager:
   - Target
   - Platform
   - Floor
+  - Flower
   layers:
   - Default
   - TransparentFX
