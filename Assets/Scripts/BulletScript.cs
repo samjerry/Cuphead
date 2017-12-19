@@ -17,7 +17,7 @@ public class BulletScript : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _targetPosition = GameObject.FindGameObjectWithTag("Target").transform.position;
-        _velocity = new Vector3(0, 0, 0);
+        _velocity = new Vector2(0, 7);
     }
 
 
@@ -28,16 +28,20 @@ public class BulletScript : MonoBehaviour
         _steering /= _rb.mass;
         _velocity += _steering;
         transform.position = transform.position + _velocity * Time.deltaTime;
-       // transform.Rotate(0, 0, -20);
+        transform.Rotate(0, 0, -20);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag != "Flower")
+        if (coll.gameObject.tag != "Target" && coll.gameObject.tag != "Flower")
         {
             Destroy(gameObject);
-            Instantiate(Explosion, new Vector2(transform.position.x, transform.position.y + 1.9f), Quaternion.Euler(new Vector2(0,0)));
+            Instantiate(Explosion, new Vector2(transform.position.x, transform.position.y + 1.7f), Quaternion.Euler(new Vector2(0,0)));
             
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }

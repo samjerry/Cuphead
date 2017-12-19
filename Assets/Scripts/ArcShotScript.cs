@@ -5,30 +5,35 @@ public class ArcShotScript : MonoBehaviour
 {
     private Animator _anim;
     public GameObject Bullet;
+    bool CoroutinePlay = true;
     
 
     void Start()
     {
-        StartCoroutine(SimulateProjectile());
         _anim = GetComponent<Animator>();
-        
     }
 
 
     IEnumerator SimulateProjectile()
     {
-        while (true) {
-            Instantiate(Bullet, transform.position, transform.rotation);
-            yield return new WaitForSeconds(5f);
-        }
+        yield return new WaitForSeconds(1f);
+
+        Instantiate(Bullet, transform.position, transform.rotation);
+
+        _anim.SetBool("InFieldOfVision", false);
+
     }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("Target"))
+        CoroutinePlay = true;
+
+        if (coll.CompareTag("Target") && CoroutinePlay == true)
         {
             _anim.SetBool("InFieldOfVision", true);
             print("in");
+            StartCoroutine(SimulateProjectile());
+            CoroutinePlay = false;
         }
        
     }
