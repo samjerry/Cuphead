@@ -18,16 +18,12 @@ public class BulletController: MonoBehaviour {
 
 	void Update(){
 
-		transform.Translate (shootDir * speed * Time.deltaTime);
+//		transform.Translate (shootDir * speed * Time.deltaTime);
 	}
 
 	void OnCollision2DEnter(Collider2D other)
 	{
-		if (other.gameObject.CompareTag ("world")){
-			Destroy (gameObject);
-		}
-
-		if (other.gameObject.CompareTag ("enemy")){
+		if (other.gameObject){
 			Destroy (gameObject);
 		}
 	}

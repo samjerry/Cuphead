@@ -10,9 +10,12 @@ public class PlayerShoot : MonoBehaviour {
 
 	public string bulDir;
 
+	public float bulletCD;
+
 	public Rigidbody2D bullet;
 
 	private float _maxSpd;
+	private float _shotTimer;
 
 	private Transform _bulDir;
 	[SerializeField]
@@ -35,16 +38,22 @@ public class PlayerShoot : MonoBehaviour {
 	}
 
 	private void Shoot(){
-		_bulInstance = Instantiate(bullet, _bulOrigin.transform.position, Quaternion.Euler(new Vector3(0, 0, 1))) as Rigidbody2D;  
-		if (bulDir == "right") {
-			_bulInstance.velocity = transform.right * _maxSpd;
+	_shotTimer -= Time.deltaTime;
+		if (_shotTimer <= 0) {
+			_shotTimer = bulletCD;
+			_bulInstance = Instantiate (bullet, _bulOrigin.transform.position, Quaternion.Euler (new Vector3 (0, 0, 1))) as Rigidbody2D;  
+			if (bulDir == "right") {
+				_bulInstance.velocity = transform.right * _maxSpd;
 
-		} else if (bulDir == "left") {
-			_bulInstance.velocity = -transform.right * _maxSpd;  
+			} else if (bulDir == "left") {
+				_bulInstance.velocity = -transform.right * _maxSpd;  
+			} else {
+				_bulInstance.velocity = transform.up * _maxSpd;  
+			}
+			Physics2D.IgnoreCollision (_bulInstance.GetComponent<Collider2D> (), GetComponent<Collider2D> ()); 
 		} else {
-			_bulInstance.velocity = transform.up * _maxSpd;  
+			_shotTimer = 0;
 		}
-		Physics2D.IgnoreCollision(_bulInstance.GetComponent<Collider2D>(), GetComponent<Collider2D>()); 
 	}
 
 	private void ChangeAimDir(){
