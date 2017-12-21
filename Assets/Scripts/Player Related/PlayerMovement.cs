@@ -15,14 +15,14 @@ public class PlayerMovement : MonoBehaviour {
 	public float walkSpeed = 3f;
 	public float dashSpeed = 5f;
 	public float dashDuration = 0.5f;
-
 	public float groundCheckRad;
+
+	public string moveDir;
 
 	public LayerMask groundLayer;
 
 	public Transform groundCheck;
 
-	private string _moveDir;
 
 	private bool _isGrounded;
 	private bool _dJumpPossible;
@@ -67,12 +67,12 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKey(KeyCode.A)){
 			transform.position += Vector3.left * walkSpeed * Time.deltaTime;
-			_moveDir = "left";
+			moveDir = "left";
 		}
 
 		if (Input.GetKey (KeyCode.D)) {
 			transform.position += Vector3.right * walkSpeed * Time.deltaTime;
-			_moveDir = "right";
+			moveDir = "right";
 		}
 	}
 
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 		float startTime = Time.time;
 		while (Time.time < (startTime + dashDuration))
 		{
-			if (_moveDir == "left") {
+			if (moveDir == "left") {
 //			if (Input.GetAxis("Horizontal") < 0) {
 				transform.position += Vector3.left * dashSpeed * Time.deltaTime;
 			} else {

@@ -17,16 +17,11 @@ public class PlayerHealth : MonoBehaviour {
 	void Update () {
 
 		if (playerHP <= 0) {
-			Dead ();
 		}
 	}
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Enemy") {
 			playerHP -= 1;
 		}
-	}
-
-	void Dead () {
-		Time.timeScale = 0;
 	}
 }

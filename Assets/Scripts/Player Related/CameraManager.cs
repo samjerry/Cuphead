@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class cameraManager : MonoBehaviour {
 
-	public GameObject target;
+	/// <summary>
+	/// camera movement by Jerry Sam
+	/// </summary>
 
-	private Vector3 offset;
+//	public GameObject target;
+//
+//	private Vector3 offset;
+//
+//	void Start ()
+//	{
+//		offset = transform.position - target.transform.position;
+//	}
+//
+//	void LateUpdate ()
+//	{
+//		if (target) {
+//			transform.position = target.transform.position + offset;
+//		}
+//	}
 
-	void Start ()
+	public Transform Player;
+
+
+	void Update ()
 	{
-		offset = transform.position - target.transform.position;
-	}
-
-	void LateUpdate ()
-	{
-        if(target)
-		transform.position = target.transform.position + offset;
+		this.transform.position = new Vector3(Player.position.x, this.transform.position.y, this.transform.position.z);
 	}
 }

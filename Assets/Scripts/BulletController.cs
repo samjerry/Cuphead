@@ -7,6 +7,10 @@ public class BulletController: MonoBehaviour {
 	public float speed;
 	public float lifeTime = 2.0f;
 
+	public Vector3 shootDir;
+	public Transform aimDir;
+
+
 	void  Awake ()
 	{
 		Destroy(gameObject, lifeTime);
@@ -14,7 +18,7 @@ public class BulletController: MonoBehaviour {
 
 	void Update(){
 
-		transform.Translate (Vector3.right * speed * Time.deltaTime);
+		transform.Translate (shootDir * speed * Time.deltaTime);
 	}
 
 	void OnCollision2DEnter(Collider2D other)

@@ -112,6 +112,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &80256065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 80256066}
+  m_Layer: 0
+  m_Name: BulletOriginUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &80256066
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 80256065}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1006761298}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487423263
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c22c79b512f4301a642c8c8be0d23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1006761295}
+  Player: {fileID: 1006761298}
 --- !u!1 &623411956
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +259,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1006761298}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810444184
 GameObject:
@@ -330,6 +358,34 @@ Transform:
   m_Father: {fileID: 2126943954}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &941167861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 941167862}
+  m_Layer: 0
+  m_Name: BulletOriginLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &941167862
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 941167861}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1006761298}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1006761295
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +483,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1639465590}
+  - {fileID: 941167862}
+  - {fileID: 80256066}
   - {fileID: 623411957}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -462,12 +520,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1006761295}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 925743f84d45548bca9734bc0c68ca6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 50543504365807232, guid: aac05e1ec309747bc8e614c6e55720fd, type: 2}
+  bullet: {fileID: 50689690750465724, guid: aac05e1ec309747bc8e614c6e55720fd, type: 2}
+  _bulOrigin: {fileID: 1639465590}
 --- !u!114 &1006761301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +557,7 @@ MonoBehaviour:
   dashSpeed: 8
   dashDuration: 0.5
   groundCheckRad: 0.3
+  moveDir: 
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -513,8 +573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea2d98d67c6c4219831f90ccf2c8d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFiring: 0
-  bullet: {fileID: 114094421348089442, guid: aac05e1ec309747bc8e614c6e55720fd, type: 2}
+  bullet: {fileID: 114428663228974908, guid: aac05e1ec309747bc8e614c6e55720fd, type: 2}
+  playermove: {fileID: 1006761302}
   bulletSpd: 12
   bulletCD: 1
   bulletOrigin: {fileID: 1639465590}
@@ -624,7 +684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1639465590}
   m_Layer: 0
-  m_Name: BulletOrigin
+  m_Name: BulletOriginRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,7 +697,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1639465589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.52, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1006761298}

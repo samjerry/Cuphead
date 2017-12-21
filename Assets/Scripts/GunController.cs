@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour {
 
-	public bool isFiring;
-
 	public BulletController bullet;
+	public PlayerMovement playermove;
 	public float bulletSpd;
 	public float bulletCD;
 	public Transform bulletOrigin;
@@ -16,16 +15,25 @@ public class GunController : MonoBehaviour {
 	private BulletController _newBullet;
 
 	void Update () {
+		if (Input.GetButtonDown("Fire1")) {
+			isFiring ();
+		}
+	}
 
-		if (isFiring) {
-
-			_shotCount -= Time.deltaTime;
-			if (_shotCount <= 0) {
-				_shotCount = bulletCD;
+	public void isFiring(){ 
+		_shotCount -= Time.deltaTime;
+		if (_shotCount <= 0) {
+			_shotCount = bulletCD;
+			if (playermove.moveDir == "right") {
 				_newBullet = Instantiate (bullet, bulletOrigin.position, bulletOrigin.rotation) as BulletController;
 				_newBullet.speed = bulletSpd;
+			}else{	
+				_newBullet = Instantiate (bullet, bulletOrigin.position, bulletOrigin.rotation) as BulletController;
+				_newBullet.speed = -bulletSpd;
 			}
-		}else{
+
+			Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), this.GetComponent<Collider2D>()); 
+		} else { 
 			_shotCount = 0;
 		}
 	}
