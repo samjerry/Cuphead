@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "WebCupHeadBuild.data.unityweb",
+"asmCodeUrl": "WebCupHeadBuild.asm.code.unityweb",
+"asmMemoryUrl": "WebCupHeadBuild.asm.memory.unityweb",
+"asmFrameworkUrl": "WebCupHeadBuild.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
